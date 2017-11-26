@@ -10,28 +10,44 @@ clear all;
 
 y = audioread('audioGeovanne2\1.wav') ;
    T = wpdec(y,8,'db9');
-   E = wenergy(T);
+   E1 = wenergy(T);
 
 fileName = 'AudiosConcatenados';
-arffwrite(fileName, E)
+arffwrite(fileName, E1)
 
 for n = 1:63
    y= audioread(strcat('audioGeovanne2\', int2str(n), '.wav')) ;
    T = wpdec(y,8,'db9');
-   E1 = wenergy(T);
-   E = [E1 1];
+   E = wenergy(T);
+   E = [E 1];
    dlmwrite(strcat(fileName,'.arff'),E,'-append') 
 end
-fprintf('saiu Geovanne');
+fprintf('saiu Geovanne\n');
 %---------------------------------------------------------------------------------%
 
 for n = 1:63
    y= audioread(strcat('audioFlavio2\', int2str(n), '.wav')) ;
    T = wpdec(y,8,'db9');
-   E1 = wenergy(T);
-   E = [E1 2];
+   E = wenergy(T);
+   E = [E 2];
    dlmwrite(strcat(fileName,'.arff'),E,'-append') 
 end
-fprintf('saiu Flavio');
+fprintf('saiu Flavio\n');
 
+fileName = 'Teste';
+arffwrite(fileName, E1)
+for n = 1:3
 
+   y= audioread(strcat('testef', int2str(n), '.wav')) ;
+   T = wpdec(y,8,'db9');
+   E = wenergy(T);
+   E = [E 2];
+   dlmwrite(strcat(fileName,'.arff'),E,'-append') 
+
+   y= audioread(strcat('testeg', int2str(n), '.wav')) ;
+   T = wpdec(y,8,'db9');
+   E = wenergy(T);
+   E = [E 1];
+   dlmwrite(strcat(fileName,'.arff'),E,'-append') 
+
+end
