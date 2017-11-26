@@ -1,4 +1,4 @@
-@relation teste-weka.filters.unsupervised.attribute.NumericToNominal-Rlast
+@relation Geovanne-weka.filters.unsupervised.attribute.NumericToNominal-Rlast
 @attribute 1 numeric
 @attribute 2 numeric
 @attribute 3 numeric
